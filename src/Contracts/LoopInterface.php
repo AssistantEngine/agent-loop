@@ -2,7 +2,6 @@
 
 namespace AssistantEngine\AgentLoop\Contracts;
 
-
 use AssistantEngine\OpenFunctions\Core\Contracts\AbstractOpenFunction;
 use AssistantEngine\OpenFunctions\Core\Contracts\List\ItemListFilterInterface;
 use AssistantEngine\OpenFunctions\Core\Contracts\List\ItemListPresenter;
