@@ -207,7 +207,7 @@ class AgentLoop
                 $response = $loop->getProvider()
                     ->request($loop->getParams(), $loop->getItemList(), $loop->getOpenFunction(), $loop->getPresenters(), $loop->getFilters());
 
-                foreach ($response->getResponseItemList()->getItems() as $item) {
+                foreach ($response->getOutputItems()->getItems() as $item) {
                     if ($item instanceof FunctionCall) {
                         $this->processFunctionCall($item, $loop, $response);
                     } elseif ($item instanceof ComputerCall) {
