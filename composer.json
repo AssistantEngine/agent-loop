@@ -1,0 +1,41 @@
+{
+    "name": "assistant-engine/agent-loop",
+    "description": "Agent Loop is an event-driven PHP orchestrator for managing iterative LLM interactions, function calls, and AI-driven workflows",
+    "keywords": [
+        "assistant-engine",
+        "laravel"
+    ],
+    "homepage": "https://github.com/AssistantEngine/agent-loop",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Florian Weigang",
+            "email": "florian@assistant-engine.com"
+        }
+    ],
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "php-http/discovery": true
+        }
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true,
+    "require": {
+        "php": "^8.3",
+        "assistant-engine/open-functions-core": "dev-development",
+        "assistant-engine/php-openai-client": "^0.0.4",
+        "openai-php/client": "^0.10.3"
+    },
+    "require-dev": {
+        "nyholm/psr7": "^1.8",
+        "phpunit/phpunit": "^11.5",
+        "symfony/http-client": "^7.2",
+        "vlucas/phpdotenv": "^5.6"
+    },
+    "autoload": {
+        "psr-4": {
+            "AssistantEngine\\AgentLoop\\": "src/"
+        }
+    }
+}

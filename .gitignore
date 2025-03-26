@@ -1,0 +1,14 @@
+/vendor/
+/composer.lock
+/combine/
+/index.php
+.env
+.idea
+/processor.php
+/memory.php
+/blockMemory.json
+/structured.php
+/demo/
+.DS_Store
+/src/.DS_Store
+/cleanup.sh
