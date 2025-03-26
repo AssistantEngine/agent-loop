@@ -6,7 +6,7 @@ use AssistantEngine\AgentLoop\Contracts\AbstractRunController;
 use AssistantEngine\OpenFunctions\Core\Contracts\Providers\ProviderResponse;
 use AssistantEngine\OpenFunctions\Core\Contracts\Responses\ComputerResponseItem;
 use AssistantEngine\OpenFunctions\Core\Contracts\Types\Item;
-use AssistantEngine\OpenFunctions\Core\Responses\Response;
+use AssistantEngine\OpenFunctions\Core\Responses\OpenFunctionResponse;
 use AssistantEngine\OpenFunctions\Core\Types\ComputerCall;
 use AssistantEngine\OpenFunctions\Core\Types\ComputerCallOutput;
 use AssistantEngine\OpenFunctions\Core\Types\FunctionCall;
@@ -25,10 +25,10 @@ class DefaultRunController extends AbstractRunController
     }
 
     public function onFunctionCallFinished(
-        FunctionCall $functionCall,
-        Response $functionResponse,
-        LoopInterface $loop,
-        ProviderResponse $response
+        FunctionCall         $functionCall,
+        OpenFunctionResponse $functionResponse,
+        LoopInterface        $loop,
+        ProviderResponse     $response
     ): void {
         $functionCallOutput = new FunctionCallOutput($functionCall->callId, json_encode($functionResponse->toArray()));
         // Add the tool message to the list.
@@ -56,10 +56,5 @@ class DefaultRunController extends AbstractRunController
         }
 
         return false;
-    }
-
-    public function onError(\Throwable $exception): void
-    {
-        throw $exception;
     }
 }

@@ -8,7 +8,7 @@ use AssistantEngine\AgentLoop\Contracts\LoopInterface;
 use AssistantEngine\OpenFunctions\Core\Contracts\Types\Item;
 use AssistantEngine\OpenFunctions\Core\Contracts\Providers\ProviderResponse;
 use AssistantEngine\OpenFunctions\Core\Types\FunctionCall;
-use AssistantEngine\OpenFunctions\Core\Responses\Response;
+use AssistantEngine\OpenFunctions\Core\Responses\OpenFunctionResponse;
 use AssistantEngine\OpenFunctions\Core\Types\ComputerCall;
 use AssistantEngine\OpenFunctions\Core\Contracts\Responses\ComputerResponseItem;
 
@@ -62,7 +62,7 @@ class InlineEventProcessor implements EventProcessorInterface
         }
     }
 
-    public function onFunctionCallFinished(FunctionCall $functionCall, Response $functionResponse, LoopInterface $loop, ProviderResponse $response): void {
+    public function onFunctionCallFinished(FunctionCall $functionCall, OpenFunctionResponse $functionResponse, LoopInterface $loop, ProviderResponse $response): void {
         if (isset($this->listeners[EventProcessorInterface::EVENT_ON_FUNCTION_CALL_FINISHED])) {
             call_user_func($this->listeners[EventProcessorInterface::EVENT_ON_FUNCTION_CALL_FINISHED], $functionCall, $functionResponse, $loop, $response);
         }
