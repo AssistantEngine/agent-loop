@@ -30,7 +30,7 @@ class DefaultRunController extends AbstractRunController
         LoopInterface        $loop,
         ProviderResponse     $response
     ): void {
-        $functionCallOutput = new FunctionCallOutput($functionCall->callId, json_encode($functionResponse->toArray()));
+        $functionCallOutput = new FunctionCallOutput($functionCall->callId, $functionResponse->getOutput());
         // Add the tool message to the list.
         $loop->addItem($functionCall);
         $loop->addItem($functionCallOutput);
