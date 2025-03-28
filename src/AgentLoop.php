@@ -96,6 +96,11 @@ class AgentLoop
         return $this;
     }
 
+    public function onBeforeProviderRequest(callable $listener): self {
+        $this->inlineEventProcessor->addListener(EventProcessorInterface::EVENT_ON_BEFORE_PROVIDER_REQUEST, $listener);
+        return $this;
+    }
+
     public function onItemCreation(callable $listener): self {
         $this->inlineEventProcessor->addListener(EventProcessorInterface::EVENT_ON_ITEM_CREATION, $listener);
         return $this;
@@ -202,6 +207,11 @@ class AgentLoop
         while ($iteration < $loop->getMaxIterations()) {
             // Trigger run step start event.
             $this->triggerEvent(EventProcessorInterface::EVENT_ON_RUN_STEP_START, $loop, $iteration);
+
+            // Before calling the provider request, check for a before-request callback.
+            $loop->getProvider()->onBeforeRequest(function (array $payload) {
+                $this->triggerEvent(EventProcessorInterface::EVENT_ON_BEFORE_PROVIDER_REQUEST, $payload);
+            });
 
             try {
                 $response = $loop->getProvider()

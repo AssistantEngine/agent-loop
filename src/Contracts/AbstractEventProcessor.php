@@ -17,6 +17,8 @@ class AbstractEventProcessor implements EventProcessorInterface
 
     public function onRunStepStart(LoopInterface $loop, int $iteration): void {}
 
+    public function onBeforeProviderRequest(array $payload): void {}
+
     public function onItemCreation(
         Item $newItem,
         LoopInterface $loop,

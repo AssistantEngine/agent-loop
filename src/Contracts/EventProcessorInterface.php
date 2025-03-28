@@ -15,6 +15,7 @@ interface EventProcessorInterface
     public const string EVENT_ON_RUN_START                = 'onRunStart';
     public const string EVENT_ON_LOOP_START               = 'onLoopStart';
     public const string EVENT_ON_RUN_STEP_START           = 'onRunStepStart';
+    public const string EVENT_ON_BEFORE_PROVIDER_REQUEST  = 'onBeforeProviderRequest';
     public const string EVENT_ON_ITEM_CREATION            = 'onItemCreation';
     public const string EVENT_ON_FUNCTION_CALL            = 'onFunctionCall';
     public const string EVENT_ON_FUNCTION_CALL_FINISHED   = 'onFunctionCallFinished';
@@ -44,6 +45,13 @@ interface EventProcessorInterface
      * @param int         $iteration The current iteration number.
      */
     public function onRunStepStart(LoopInterface $loop, int $iteration): void;
+
+    /**
+     * Handle an event before a provider request is made
+     *
+     * @param array $payload
+     */
+    public function onBeforeProviderRequest(array $payload): void;
 
     /**
      * Handle a new assistant message event.

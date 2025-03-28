@@ -50,6 +50,12 @@ class InlineEventProcessor implements EventProcessorInterface
         }
     }
 
+    public function onBeforeProviderRequest(array $payload): void {
+        if (isset($this->listeners[EventProcessorInterface::EVENT_ON_BEFORE_PROVIDER_REQUEST])) {
+            call_user_func($this->listeners[EventProcessorInterface::EVENT_ON_BEFORE_PROVIDER_REQUEST], $payload);
+        }
+    }
+
     public function onItemCreation(Item $newItem, LoopInterface $loop, ProviderResponse $response): void {
         if (isset($this->listeners[EventProcessorInterface::EVENT_ON_ITEM_CREATION])) {
             call_user_func($this->listeners[EventProcessorInterface::EVENT_ON_ITEM_CREATION], $newItem, $loop, $response);
