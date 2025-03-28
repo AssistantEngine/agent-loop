@@ -24,7 +24,6 @@
     "require": {
         "php": "^8.3",
         "assistant-engine/open-functions-core": "dev-development",
-        "assistant-engine/php-openai-client": "^0.0.4",
         "openai-php/client": "^0.10.3"
     },
     "require-dev": {
